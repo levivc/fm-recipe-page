@@ -37,10 +37,12 @@ body {
 }
 
 .main-illustration {
-    width: 100%;
-    display: block;
     padding: 0;
     margin: 0;
+    img {
+        width: 100%;
+        display: block;
+    }
 }
 
 main {
@@ -57,7 +59,7 @@ header {
     section {
         padding: 1.5rem;
         background-color: var(--ui-rose-50);
-        border-radius: 1rem;
+        border-radius: 0.75rem;
         h2 {
             font-family: Outfit, Arial, Helvetica, sans-serif;
             color: var(--ui-rose-800);
@@ -65,14 +67,8 @@ header {
             font-size: 1.25rem;
             padding-bottom: 1rem;
         }
-        li {
-            padding: 0.5rem 0 0 1rem;
-            &::marker {
-                color: var(--ui-rose-800);
-            }
-            &:first-child {
-                padding-top: 0;
-            }
+        li::before {
+            color: var(--ui-rose-800);
         }
     }
 }
@@ -84,20 +80,41 @@ main > * {
 main > section {
     padding: 2rem 0;
     border-bottom: 1px solid var(--ui-stone-150);
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 1.9rem;
+    }
 }
 
 ul, ol {
     padding-left: 1.5em;
     li {
-        padding: 0.5rem 0 0 1rem;
+        padding-left: 1rem;
+        margin-top: 0.5rem;
         &:first-child {
-            padding-top: 0;
+            margin-top: 0;
         }
         &::marker {
             color: var(--ui-brown-800);
             font-weight: 700;
         }
     }
+}
+
+ul {
+    list-style: none;
+    li {
+        position: relative;
+    }
+    li::before {
+        content: "•";
+        color: var(--ui-brown-800);
+        font-weight: 700;
+        position: absolute;
+        left: -1rem;
+        top: 50%; /* aligns top of the box that conains "•" */
+        transform: translateY(-50%); /* move up half the height of that box */
+   }
 }
 
 h1, h2 {
@@ -136,6 +153,34 @@ table {
     }
     tr:first-child :is(th, td) {
         border-top: none;
+    }
+}
+
+@media (min-width: 1440px) {
+    main {
+        width: 736px;
+        margin: 7.66rem auto;
+        border-radius: 1.5rem;
+    }
+
+    .main-illustration {
+        margin: 0 2.5rem;
+        padding-top: 2.5rem;
+        img {
+            border-radius: 0.75rem;
+        }
+    }
+
+    main > * {
+        margin: 0 2.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    header section {
+        padding: 1.75rem;
     }
 }
 
