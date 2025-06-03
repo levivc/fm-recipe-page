@@ -38,20 +38,13 @@ body {
 
 main {
     background-color: var(--ui-white);
-    /* Evaluates to 23.4375rem (375px) for a 375px wide viewport,
-    and 46rem (736px) for 1440px */
-    inline-size: calc(15.493rem + 33.897vi);
-    /* Evaluates to 0rem for a 375px wide viewport, and 7.66rem for 1440px */
-    margin-block: calc(11.508vi - 2.697rem);
+    /* between 320px and 736px */
+    inline-size: clamp(20rem, 100vi, 46rem);
     margin-inline: auto;
-    /* Evaluates to 0rem for a 375px wide viewport, and 1.5rem for 1440px */
-    border-radius: calc(2.254vi - 0.528rem);
 }
-
 main > * {
     margin-inline: 2rem;
 }
-
 main > section {
     padding-block: 2em;
     border-block-end: 1px solid var(--ui-stone-150);
@@ -66,10 +59,6 @@ main > section {
     img {
         inline-size: 100%;
         display: block;
-        /* Evaluates to 0rem for a 375px wide viewport, and 1.5rem for 1440px */
-        --radius: calc(2.254vi - 0.528rem);
-        border-start-start-radius: var(--radius);
-        border-start-end-radius: var(--radius);
     }
 }
 
@@ -111,7 +100,6 @@ ul, ol {
         }
     }
 }
-
 ul {
     list-style: none;
     li {
@@ -167,19 +155,30 @@ table {
     }
 }
 
-@media (min-width: 56.6875rem) { /* 907px, half way between 375px and 1440px */
+@media (min-width: 38rem) { /* 672px */
     .main-illustration {
-        /* Evaluates to 2rem for a 375px wide viewport, and 2.5rem for 1440px */
-        margin-inline: calc(1.824rem + 0.751vi);
-        /* Evaluates to 2rem for a 375px wide viewport, and 2.5rem for 1440px */
-        padding-block-start: calc(1.824rem + 0.751vi);
+        margin-inline: 2rem;
+        padding-block-start: 2rem;
         img {
-            /* Evaluates to 0.375rem for a 375px wide viewport, and 0.75rem for 1440px */
-            border-radius: calc(0.243rem + 0.563vi);
+            border-radius: 0.75rem;
         }
     }
+}
+
+@media (min-width: 46rem) { /* 736px */
+    .main-illustration {
+        /* Evaluates to 2rem for a 736px wide viewport, and 2.5rem for 1440px */
+        margin-inline: calc(1.477rem + 1.136vi);
+        /* Evaluates to 2rem for a 736px wide viewport, and 2.5rem for 1440px */
+        padding-block-start: calc(1.477rem + 1.136vi);
+    }
+    main {
+        /* Evaluates to 0rem for a 736px wide viewport, and 7.66rem for 1440px */
+        margin-block: calc(17.409vi - 8.008rem);
+        border-radius: 1.5rem;
+    }
     main > * {
-        /* Evaluates to 2rem for a 375px wide viewport, and 2.5rem for 1440px */
-        margin-inline: calc(1.824rem + 0.751vi);
+        /* Evaluates to 2rem for a 736px wide viewport, and 2.5rem for 1440px */
+        margin-inline: calc(1.477rem + 1.136vi);
     }
 }
